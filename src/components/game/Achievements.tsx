@@ -1,36 +1,64 @@
 import { useGame } from "@/context/GameContext";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
 
-const Achievements = () => {
+export const Achievements = () => {
   const { achievements } = useGame();
 
+  const unlockedCount = achievements.filter((a) => a.unlocked).length;
+  const totalXpFromAchievements = achievements
+    .filter((a) => a.unlocked)
+    .reduce((sum, a) => sum + a.xpReward, 0);
+
   return (
-    <div className="quest-panel space-y-3">
-      <h3 className="text-[10px] text-accent pixel-text-shadow">🏆 ACHIEVEMENTS</h3>
-      <div className="space-y-2">
+    <div className="w-full space-y-4">
+      <div className="mb-6">
+        <div className="flex justify-between items-center mb-2">
+          <h2 className="text-2xl font-bold text-yellow-900">🏆 Achievements</h2>
+          <Badge className="bg-yellow-600 text-white border-2 border-yellow-400">
+            {unlockedCount} / {achievements.length}
+          </Badge>
+        </div>
+        <Progress value={(unlockedCount / achievements.length) * 100} className="h-3 border-2 border-yellow-400 rounded-none" />
+        <p className="text-xs text-gray-600 mt-2">Total XP from achievements: +{totalXpFromAchievements}</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {achievements.map((achievement) => (
-          <div
+          <Card
             key={achievement.id}
-            className={`flex items-center gap-2 p-2 pixel-border text-[8px] transition-all ${
+            className={`border-2 rounded-none transition-all ${
               achievement.unlocked
-                ? "bg-muted border-level-complete"
-                : "bg-background opacity-50"
+                ? "border-yellow-400 bg-yellow-50 shadow-md"
+                : "border-gray-300 bg-gray-50 opacity-70"
             }`}
           >
-            <span className={`text-xl ${achievement.unlocked ? "animate-pixel-bounce" : "grayscale"}`}>
-              {achievement.icon}
-            </span>
-            <div className="flex-1 min-w-0">
-              <p className={achievement.unlocked ? "text-level-complete" : "text-muted-foreground"}>
-                {achievement.title}
-              </p>
-              <p className="text-[6px] text-muted-foreground">{achievement.description}</p>
-            </div>
-            <span className="text-[8px] text-gold">+{achievement.xpReward}XP</span>
-          </div>
+            <CardHeader className="pb-3">
+              <div className="flex items-start justify-between">
+                <div className="text-4xl">{achievement.icon}</div>
+                {achievement.unlocked && (
+                  <Badge className="bg-green-600 text-white text-xs">✓ Unlocked</Badge>
+                )}
+              </div>
+            </CardHeader>
+            <CardContent>
+              <CardTitle className="text-base mb-1">{achievement.title}</CardTitle>
+              <CardDescription className="text-xs text-gray-700 mb-3">
+                {achievement.description}
+              </CardDescription>
+              <div className="flex justify-between items-center text-xs">
+                <span className="font-bold text-yellow-700">+{achievement.xpReward} XP</span>
+                {achievement.unlocked && achievement.unlockedAt && (
+                  <span className="text-gray-600">
+                    {new Date(achievement.unlockedAt).toLocaleDateString()}
+                  </span>
+                )}
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>
   );
 };
-
-export default Achievements;

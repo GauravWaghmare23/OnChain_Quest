@@ -6,7 +6,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { WagmiProvider } from "wagmi";
 import { wagmiConfig } from "@/config/wagmi";
 import { GameProvider } from "@/context/GameContext";
-import Landing from "./pages/Landing";
+import LandingModern from "./pages/LandingModern";
+import DashboardModern from "./pages/DashboardModern";
+import Level1Modern from "./pages/Level1Modern";
+import Level2Modern from "./pages/Level2Modern";
+import Level3Modern from "./pages/Level3Modern";
 import Quest from "./pages/Quest";
 import NotFound from "./pages/NotFound";
 
@@ -21,7 +25,11 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Landing />} />
+              <Route path="/" element={<LandingModern />} />
+              <Route path="/dashboard" element={<DashboardModern />} />
+              <Route path="/level/1" element={<Level1Modern />} />
+              <Route path="/level/2" element={<Level2Modern />} />
+              <Route path="/level/3" element={<Level3Modern />} />
               <Route path="/quest" element={<Quest />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
