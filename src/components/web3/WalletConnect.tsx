@@ -1,10 +1,13 @@
 import { useConnect, useAccount, useDisconnect } from "wagmi";
 import { useGame } from "@/context/GameContext";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useEffect } from "react";
 
-export const WalletConnect = () => {
+interface WalletConnectProps {
+  compact?: boolean;
+}
+
+export const WalletConnect = ({ compact = false }: WalletConnectProps) => {
   const { connectors, connect, isPending } = useConnect();
   const { address, isConnected } = useAccount();
   const { disconnect } = useDisconnect();
@@ -17,55 +20,71 @@ export const WalletConnect = () => {
     }
   }, [isConnected, address, unlockAchievement, addToInventory]);
 
-  if (isConnected) {
-    return (
-      <Card className="border-2 border-green-400 rounded-none bg-green-50">
-        <CardHeader className="bg-green-100 border-b-2 border-green-400">
-          <CardTitle className="text-lg flex items-center gap-2">
-            <span className="text-2xl">✅</span>
-            Wallet Connected!
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="pt-4 space-y-4">
-          <div className="p-3 bg-white border-2 border-green-300 rounded-none">
-            <p className="text-xs font-bold text-gray-600 mb-2">Your Address</p>
-            <p className="text-sm font-mono text-gray-900 break-all">{address}</p>
-          </div>
+  // Compact navbar mode
+  if (compact) {
+    if (isConnected) {
+      return (
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-gray-400 hidden sm:inline">
+            {address?.slice(0, 6)}...{address?.slice(-4)}
+          </span>
           <Button
             onClick={() => disconnect()}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-bold rounded-none border-2 border-red-400"
+            className="text-xs h-9 px-3 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 border border-cyan-500/50 rounded-lg transition-all duration-200"
           >
-            Disconnect Wallet
+            Disconnect
           </Button>
-        </CardContent>
-      </Card>
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex gap-2">
+        {connectors.map((connector) => (
+          <Button
+            key={connector.uid}
+            onClick={() => connect({ connector })}
+            disabled={isPending}
+            className="text-sm h-9 px-4 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-lg transition-all duration-200 disabled:opacity-50"
+          >
+            {isPending ? "Connecting..." : "Connect"}
+          </Button>
+        ))}
+      </div>
+    );
+  }
+
+  // Full card mode (for modal)
+  if (isConnected) {
+    return (
+      <div className="space-y-4">
+        <div className="p-4 bg-gray-900 border border-cyan-500/50 rounded-xl">
+          <p className="text-xs font-mono text-gray-400 mb-2">Connected Address</p>
+          <p className="text-sm font-mono text-cyan-400 break-all">{address}</p>
+        </div>
+        <Button
+          onClick={() => disconnect()}
+          className="w-full h-9 bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/50 rounded-lg transition-all duration-200"
+        >
+          Disconnect
+        </Button>
+      </div>
     );
   }
 
   return (
-    <Card className="border-2 border-blue-400 rounded-none bg-blue-50">
-      <CardHeader className="bg-blue-100 border-b-2 border-blue-400">
-        <CardTitle className="text-lg">⚡ Connect Your Wallet</CardTitle>
-      </CardHeader>
-      <CardContent className="pt-4 space-y-4">
-        <p className="text-sm text-gray-700">
-          To start your Web3 learning journey, connect your MetaMask wallet. This is how you'll
-          interact with blockchain contracts and learn by doing!
-        </p>
-        <div className="space-y-2">
-          {connectors.map((connector) => (
-            <Button
-              key={connector.uid}
-              onClick={() => connect({ connector })}
-              disabled={isPending}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-none border-2 border-blue-400 disabled:opacity-50"
-            >
-              {isPending ? "Connecting..." : `🔗 Connect ${connector.name}`}
-            </Button>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
+    <div className="space-y-3">
+      {connectors.map((connector) => (
+        <Button
+          key={connector.uid}
+          onClick={() => connect({ connector })}
+          disabled={isPending}
+          className="w-full h-10 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-lg transition-all duration-200 disabled:opacity-50"
+        >
+          {isPending ? "Connecting..." : `🔗 Connect ${connector.name}`}
+        </Button>
+      ))}
+    </div>
   );
 };
 

@@ -149,7 +149,7 @@ export default function Quest() {
               <CardContent className="pt-6 space-y-4">
                 <Tabs defaultValue="storage" className="w-full">
                   <TabsList className="grid w-full grid-cols-2 rounded-none border-2 border-green-400">
-                    <TabsTrigger value="storage" className="rounded-none border border-green-300">💾 Storage Contract</TabsTrigger>
+                    <TabsTrigger value="storage" className="rounded-none border border-green-300">� Storage Contract</TabsTrigger>
                     <TabsTrigger value="nft" className="rounded-none border border-green-300">✨ NFT Minting</TabsTrigger>
                   </TabsList>
                   <TabsContent value="storage" className="space-y-4 mt-4">

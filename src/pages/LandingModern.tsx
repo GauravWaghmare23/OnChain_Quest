@@ -39,24 +39,22 @@ export default function LandingModern() {
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/40 border-b border-emerald-500/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/40 border-b border-emerald-500/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded flex items-center justify-center">
-              <Code2 className="w-5 h-5 text-black font-bold" />
+            <div className="w-7 h-7 bg-cyan-500 rounded flex items-center justify-center">
+              <Code2 className="w-4 h-4 text-black font-bold" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="text-lg font-bold text-cyan-400 hidden sm:inline">
               Onchain Quest
             </span>
           </div>
-          <div className="flex gap-4">
-            <WalletConnect />
-          </div>
+          <WalletConnect compact={true} />
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center pt-20 px-4">
+      <section className="min-h-screen flex items-center justify-center pt-16 px-4">
         <div className="max-w-4xl w-full text-center space-y-8 animate-fade-in">
           {/* Badge */}
           <div className="inline-block">
@@ -71,7 +69,7 @@ export default function LandingModern() {
           <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-tight">
             <span className="text-white">Learn Web3 by</span>
             <br />
-            <span className="bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="text-cyan-400">
               Deploying Real Smart Contracts
             </span>
           </h1>
@@ -85,14 +83,14 @@ export default function LandingModern() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
             <Button
               onClick={handleStartLearning}
-              className="px-8 py-6 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-black font-bold rounded-lg text-lg flex items-center justify-center gap-2 transition-all duration-300 group"
+              className="px-8 py-6 bg-cyan-500 hover:bg-cyan-600 text-black font-bold rounded-lg text-lg flex items-center justify-center gap-2 transition-all duration-300 group"
             >
               {isConnected ? "Go to Dashboard" : "Start Learning"}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
               variant="outline"
-              className="px-8 py-6 border-2 border-emerald-500/50 hover:border-emerald-500 hover:bg-emerald-500/10 text-white rounded-lg text-lg font-bold transition-all duration-300"
+              className="px-8 py-6 border-2 border-cyan-500/50 hover:border-cyan-500 hover:bg-cyan-500/10 text-white rounded-lg text-lg font-bold transition-all duration-300"
               onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
             >
               Learn More
@@ -101,7 +99,7 @@ export default function LandingModern() {
 
           {/* Scroll Indicator */}
           <div className="pt-12 flex justify-center animate-bounce">
-            <ChevronDown className="w-6 h-6 text-emerald-400" />
+            <ChevronDown className="w-6 h-6 text-cyan-400" />
           </div>
         </div>
       </section>
@@ -115,8 +113,8 @@ export default function LandingModern() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Feature 1 */}
-            <div className="group p-8 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-transparent hover:border-emerald-500/50 transition-all duration-300 backdrop-blur-sm">
-              <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-cyan-400 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="group p-8 rounded-2xl border border-cyan-500/20 bg-cyan-500/5 hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-sm">
+              <div className="w-12 h-12 bg-cyan-500 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Code2 className="w-6 h-6 text-black" />
               </div>
               <h3 className="text-xl font-bold mb-4">Learn Contracts</h3>
@@ -126,8 +124,8 @@ export default function LandingModern() {
             </div>
 
             {/* Feature 2 */}
-            <div className="group p-8 rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/5 to-transparent hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-sm">
-              <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="group p-8 rounded-2xl border border-cyan-500/20 bg-cyan-500/5 hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-sm">
+              <div className="w-12 h-12 bg-cyan-500 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Zap className="w-6 h-6 text-black" />
               </div>
               <h3 className="text-xl font-bold mb-4">Deploy Live</h3>
@@ -137,8 +135,8 @@ export default function LandingModern() {
             </div>
 
             {/* Feature 3 */}
-            <div className="group p-8 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-500/5 to-transparent hover:border-blue-500/50 transition-all duration-300 backdrop-blur-sm">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-400 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="group p-8 rounded-2xl border border-cyan-500/20 bg-cyan-500/5 hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-sm">
+              <div className="w-12 h-12 bg-cyan-500 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Shield className="w-6 h-6 text-black" />
               </div>
               <h3 className="text-xl font-bold mb-4">Earn Reputation</h3>
@@ -159,7 +157,7 @@ export default function LandingModern() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Level 1 */}
-            <div className="p-8 rounded-2xl border border-cyan-500/30 bg-gradient-to-br from-cyan-500/10 to-black backdrop-blur-sm">
+            <div className="p-8 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
               <div className="text-6xl mb-4">📦</div>
               <h3 className="text-2xl font-bold mb-3">Level 1: Storage</h3>
               <p className="text-gray-400 mb-6">
@@ -173,7 +171,7 @@ export default function LandingModern() {
             </div>
 
             {/* Level 2 */}
-            <div className="p-8 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-black backdrop-blur-sm">
+            <div className="p-8 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
               <div className="text-6xl mb-4">⚡</div>
               <h3 className="text-2xl font-bold mb-3">Level 2: Mappings</h3>
               <p className="text-gray-400 mb-6">
@@ -187,7 +185,7 @@ export default function LandingModern() {
             </div>
 
             {/* Level 3 */}
-            <div className="p-8 rounded-2xl border border-purple-500/30 bg-gradient-to-br from-purple-500/10 to-black backdrop-blur-sm">
+            <div className="p-8 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
               <div className="text-6xl mb-4">👑</div>
               <h3 className="text-2xl font-bold mb-3">Level 3: Governance</h3>
               <p className="text-gray-400 mb-6">
@@ -208,25 +206,25 @@ export default function LandingModern() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div className="p-6">
-              <div className="text-4xl font-black bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+              <div className="text-4xl font-black text-cyan-400 mb-2">
                 1000+
               </div>
               <p className="text-gray-400">Learners</p>
             </div>
             <div className="p-6">
-              <div className="text-4xl font-black bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+              <div className="text-4xl font-black text-cyan-400 mb-2">
                 3
               </div>
               <p className="text-gray-400">Levels</p>
             </div>
             <div className="p-6">
-              <div className="text-4xl font-black bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+              <div className="text-4xl font-black text-cyan-400 mb-2">
                 100%
               </div>
               <p className="text-gray-400">On-Chain</p>
             </div>
             <div className="p-6">
-              <div className="text-4xl font-black bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+              <div className="text-4xl font-black text-cyan-400 mb-2">
                 Free
               </div>
               <p className="text-gray-400">Forever</p>
@@ -246,7 +244,7 @@ export default function LandingModern() {
           </p>
           <Button
             onClick={handleStartLearning}
-            className="px-10 py-6 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-black font-bold rounded-lg text-lg flex items-center justify-center gap-2 mx-auto transition-all duration-300 group"
+            className="px-10 py-6 bg-cyan-500 hover:bg-cyan-600 text-black font-bold rounded-lg text-lg flex items-center justify-center gap-2 mx-auto transition-all duration-300 group"
           >
             {isConnected ? "Go to Dashboard" : "Connect Wallet & Start"}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -256,18 +254,18 @@ export default function LandingModern() {
 
       {/* Wallet Modal */}
       {showWalletModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="bg-black border border-emerald-500/30 rounded-2xl p-8 max-w-md w-full mx-4">
-            <h2 className="text-2xl font-bold mb-4">Connect Your Wallet</h2>
-            <p className="text-gray-400 mb-6">
-              You need a Web3 wallet to access Onchain Quest. Connect MetaMask or your preferred wallet to continue.
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md">
+          <div className="bg-black border-2 border-cyan-500 rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
+            <h2 className="text-2xl font-bold text-cyan-400 mb-2">⚡ Connect Your Wallet</h2>
+            <p className="text-gray-400 mb-6 text-sm">
+              Start your Web3 learning journey by connecting your MetaMask wallet.
             </p>
             <div className="mb-6">
-              <WalletConnect />
+              <WalletConnect compact={false} />
             </div>
             <button
               onClick={() => setShowWalletModal(false)}
-              className="w-full py-2 text-gray-400 hover:text-white transition-colors"
+              className="w-full py-2 text-sm text-gray-500 hover:text-cyan-400 transition-colors font-medium"
             >
               Dismiss
             </button>

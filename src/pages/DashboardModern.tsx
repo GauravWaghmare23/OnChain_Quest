@@ -45,7 +45,7 @@ export default function DashboardModern() {
   const renderProfileTab = () => (
     <div className="space-y-6">
       {/* User Card */}
-      <div className="p-8 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-black backdrop-blur-sm">
+      <div className="p-8 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-2xl font-bold mb-2">Your Profile</h2>
@@ -53,27 +53,27 @@ export default function DashboardModern() {
               {address?.slice(0, 6)}...{address?.slice(-4)}
             </p>
           </div>
-          <div className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-cyan-400 rounded-full flex items-center justify-center text-2xl">
+          <div className="w-16 h-16 bg-cyan-500 rounded-full flex items-center justify-center text-2xl">
             ⚡
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          <div className="p-4 bg-black/50 rounded-lg border border-gray-700">
+          <div className="p-4 bg-black/50 rounded-lg border border-cyan-500/30">
             <p className="text-gray-400 text-sm mb-1">Total XP</p>
-            <p className="text-3xl font-black text-emerald-400">{game.xp}</p>
+            <p className="text-3xl font-black text-cyan-400">{game.xp}</p>
           </div>
-          <div className="p-4 bg-black/50 rounded-lg border border-gray-700">
+          <div className="p-4 bg-black/50 rounded-lg border border-cyan-500/30">
             <p className="text-gray-400 text-sm mb-1">Level</p>
             <p className="text-3xl font-black text-cyan-400">{game.level}</p>
           </div>
-          <div className="p-4 bg-black/50 rounded-lg border border-gray-700">
+          <div className="p-4 bg-black/50 rounded-lg border border-cyan-500/30">
             <p className="text-gray-400 text-sm mb-1">Quests Done</p>
-            <p className="text-3xl font-black text-purple-400">{game.questsCompleted.length}</p>
+            <p className="text-3xl font-black text-cyan-400">{game.questsCompleted.length}</p>
           </div>
-          <div className="p-4 bg-black/50 rounded-lg border border-gray-700">
+          <div className="p-4 bg-black/50 rounded-lg border border-cyan-500/30">
             <p className="text-gray-400 text-sm mb-1">Playtime</p>
-            <p className="text-3xl font-black text-blue-400">
+            <p className="text-3xl font-black text-cyan-400">
               {Math.floor(game.playtime / 3600)}h
             </p>
           </div>
@@ -85,7 +85,7 @@ export default function DashboardModern() {
         <h3 className="text-xl font-bold mb-6">Achievements</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {game.achievements.slice(0, 6).map((achievement) => (
-            <div key={achievement.id} className="p-4 bg-gray-900 rounded-lg border border-gray-700 hover:border-emerald-500/50 transition-colors text-center">
+            <div key={achievement.id} className="p-4 bg-gray-900 rounded-lg border border-gray-700 hover:border-cyan-500/50 transition-colors text-center">
               <div className="text-3xl mb-2">{achievement.icon}</div>
               <p className="text-xs text-gray-400">{achievement.name}</p>
             </div>
@@ -99,7 +99,7 @@ export default function DashboardModern() {
     <div className="space-y-6">
       {/* Overview Card */}
       <div className="grid md:grid-cols-3 gap-6">
-        <div className="p-6 rounded-2xl border border-cyan-500/30 bg-gradient-to-br from-cyan-500/10 to-black backdrop-blur-sm">
+        <div className="p-6 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
           <div className="flex items-center justify-between mb-4">
             <span className="text-gray-400">Overall Progress</span>
             <span className="text-2xl font-black text-cyan-400">
@@ -108,20 +108,20 @@ export default function DashboardModern() {
           </div>
           <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden border border-gray-700">
             <div
-              className="h-full bg-gradient-to-r from-cyan-400 to-blue-400 transition-all duration-500"
+              className="h-full bg-cyan-400 transition-all duration-500"
               style={{ width: `${(game.questsCompleted.length / 5) * 100}%` }}
             />
           </div>
         </div>
 
-        <div className="p-6 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-black backdrop-blur-sm">
+        <div className="p-6 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
           <p className="text-gray-400 mb-4">XP to Next Level</p>
-          <p className="text-3xl font-black text-emerald-400">{1000 - (game.xp % 1000)}</p>
+          <p className="text-3xl font-black text-cyan-400">{1000 - (game.xp % 1000)}</p>
         </div>
 
-        <div className="p-6 rounded-2xl border border-purple-500/30 bg-gradient-to-br from-purple-500/10 to-black backdrop-blur-sm">
+        <div className="p-6 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
           <p className="text-gray-400 mb-4">Contracts Deployed</p>
-          <p className="text-3xl font-black text-purple-400">{game.questsCompleted.length}</p>
+          <p className="text-3xl font-black text-cyan-400">{game.questsCompleted.length}</p>
         </div>
       </div>
 
@@ -137,14 +137,14 @@ export default function DashboardModern() {
               <span className="text-sm text-gray-400">2/3</span>
             </div>
             <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden border border-gray-700">
-              <div className="h-full bg-gradient-to-r from-cyan-400 to-blue-400 w-2/3 transition-all" />
+              <div className="h-full bg-cyan-400 w-2/3 transition-all" />
             </div>
           </div>
 
           {/* Level 2 */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="font-semibold text-emerald-400">Level 2: Skills</span>
+              <span className="font-semibold text-cyan-400">Level 2: Skills</span>
               <span className="text-sm text-gray-400">0/1</span>
             </div>
             <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden border border-gray-700">
@@ -255,44 +255,46 @@ export default function DashboardModern() {
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/40 border-b border-emerald-500/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/40 border-b border-cyan-500/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded flex items-center justify-center text-sm font-bold text-black">
+            <div className="w-7 h-7 bg-cyan-500 rounded flex items-center justify-center text-xs font-bold text-black">
               OQ
             </div>
-            <span className="font-bold text-lg bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="font-bold text-lg bg-cyan-400 text-cyan-400 hidden sm:inline">
               Onchain Quest
             </span>
           </div>
-          <WalletConnect />
+          <WalletConnect compact={true} />
         </div>
       </nav>
 
       {/* Main Content */}
-      <div className="pt-24 px-4 pb-12">
+      <div className="pt-20 px-4 pb-12">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="mb-12">
-            <h1 className="text-5xl md:text-6xl font-black mb-4">
-              <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                Welcome Back
-              </span>
-            </h1>
-            <p className="text-gray-400 text-lg">
-              Continue your Web3 learning journey. Level: <span className="text-emerald-400 font-bold">{game.level}</span>
-            </p>
+          <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-black mb-2">
+                <span className="text-cyan-400">
+                  Dashboard
+                </span>
+              </h1>
+              <p className="text-gray-400 text-sm">
+                Level <span className="text-cyan-400 font-bold">{game.level}</span> • {game.xp} XP
+              </p>
+            </div>
           </div>
 
           {/* Tabs */}
-          <div className="flex gap-4 mb-8 border-b border-gray-800">
+          <div className="flex gap-2 mb-8 border-b border-gray-800">
             {DASHBOARD_TABS.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`py-4 px-6 font-semibold flex items-center gap-2 transition-all border-b-2 ${
+                className={`py-3 px-4 text-sm font-semibold flex items-center gap-2 transition-all border-b-2 ${
                   activeTab === tab.id
-                    ? "border-emerald-400 text-emerald-400"
+                    ? "border-cyan-400 text-cyan-400"
                     : "border-transparent text-gray-400 hover:text-white"
                 }`}
               >
